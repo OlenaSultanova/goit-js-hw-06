@@ -14,13 +14,18 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
-images.forEach((image) => {
-  const li = document.createElement("li");
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  li.innerHTML = `<img src="${image.url}" alt="${image.alt}">`;
-  li.classList.add("item");
+const createGalleryMarkup = (images) => {
+  const markup = images
+    .map(({ url, alt }) => {
+      return `
+      <li class="gallery__item">
+        <img src="${url}" alt="${alt}" class="gallery__img">
+      </li>
+    `;
+    })
+    .join("");
 
-  gallery.insertAdjacentElement("beforeend", li);
-});
+  gallery.insertAdjacentHTML("beforeend", markup);
+};
+
+createGalleryMarkup(images);

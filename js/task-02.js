@@ -8,11 +8,13 @@ const ingredients = [
 ];
 
 const ul = document.querySelector("#ingredients");
+const createFragmentIngredients = document.createElement("ul");
 
 ingredients.forEach((ingredient) => {
   const li = document.createElement("li");
   li.textContent = ingredient;
   li.classList.add("item");
 
-  ul.appendChild(li);
+  createFragmentIngredients.appendChild(li);
+  ul.appendChild(createFragmentIngredients);
 });
