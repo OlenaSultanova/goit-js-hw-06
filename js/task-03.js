@@ -14,18 +14,18 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
-const createGalleryMarkup = (images) => {
-  const markup = images
-    .map(({ url, alt }) => {
-      return `
-      <li class="gallery__item">
-        <img src="${url}" alt="${alt}" class="gallery__img">
-      </li>
-    `;
-    })
-    .join("");
+const markup = images
+  .map(
+    (image) =>
+      `<li><img class="picture" src=${image.url} width = '400' alt='${image.alt}'></img></li>`
+  )
+  .join("");
 
-  gallery.insertAdjacentHTML("beforeend", markup);
-};
+gallery.insertAdjacentHTML("beforeend", markup);
 
-createGalleryMarkup(images);
+const pictures = document.querySelectorAll(".picture");
+
+gallery.style.display = "flex";
+gallery.style.listStyle = "none";
+gallery.style.gap = "20px";
+gallery.style.justifyContent = "center";
